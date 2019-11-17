@@ -1,0 +1,126 @@
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code,
+dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6,
+header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby,
+s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u,
+ul, var, video {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("../images/background.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    user-select: none;
+}
+
+header{
+    height: 100px;
+    width: 100%;
+    min-width: 960px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+ header .user{
+     color: red;
+     font-size: 2em;
+     position: relative;
+     left: 80%;
+     top: 50%;
+}
+.menu {
+    display: inline-block;
+    height: 40px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-right: 15px;
+    padding: 0 23px;
+    border: 1px solid hsla(0,0%,100%,.6);
+    color: hsla(0,0%,100%,.6);
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 40px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    left: 40%;
+    top: 50px;
+}
+
+.menu:active, .menu:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.menu-click {
+    border-color: #fff;
+    color: #fff;
+}
+.center{
+    background-color: #fff;
+    width: 500px;
+    height: 500px;
+}
+.divs{
+    width:560px;
+    height :360px;
+    background-color :#fff;
+    opacity: 0.7;
+    position :fixed;
+    top: 20%;
+    left: 29%;
+    z-index: 1;
+    display: none;
+}
+.dis{
+    width:560px;
+    height :35px;
+    background-color :#fff;
+    opacity: 0.7;
+    position :fixed;
+    top: 20%;
+    left: 29%;
+    z-index: 1;
+    display: none;
+}
+/* .divhidden{
+    display: none;
+} */
+.dis .submits{
+    position: relative;
+    left: 60%;
+}
+.file{
+    width: 13%;
+    position: relative;
+    left: 30%;
+}
+.divs  .search{
+   position: absolute;
+   left: 25%;
+   top: 40%;
+   /*width: 50%;*/
+   height: 10%;
+   border-radius: 25px 0  0 25px;
+   outline: none;
+}
+.divs .form .search1{
+    background: rgb(73,101,107);
+    position: absolute;
+    left: 75%;
+    top: 39.9%;
+    windows: 50px;
+    height: 37px;
+    border-radius: 0 20px 20px 0;
+    border: 1px solid rgba(255,255,255,.5);
+    outline: none;
+}
+.divs .form .search1:hover{
+    cursor: pointer;
+}
+
+.divs .form .search1:active{
+    border:1px  solid rgb(185,151,139);
+}
