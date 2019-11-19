@@ -25,7 +25,7 @@ menu[1].onclick = function () {
         menu[i].classList.remove("menu-click");
     }
     this.classList.add("menu-click");
-    
+
     // remove();
     // m = 0;
     // count = 0;
@@ -84,5 +84,23 @@ menu[2].onclick = function () {
 //     var div1 = document.getElementsByClassName("divs");
 //     document.body.removeChild(div1[0]);
 // }
+// var img  = document.getElementsByTagName("img")[0];
+//
+//
+// var btn = document.querySelector('.singer.song')
+// var audioElem = document.getElementsT
+// btn.onclick = function () {
+//
+// }
+var img = document.getElementsByTagName("img");
+var names = document.getElementById('title')
+var source = document.getElementsByTagName("audio")[0];
+for (let i = 0; i < img.length; i++) {
+    img[i].onclick = function () {
+        source.setAttribute("src", img[i].dataset.url);
+        names.innerText = img[i].dataset.name;
+    }
+}
+
 
 

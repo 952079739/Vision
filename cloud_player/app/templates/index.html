@@ -14,53 +14,43 @@
         <span class="menu">上传</span>
         <span class="menu menu-click">歌单</span>
         <span class="menu">搜索</span>
-        <span class="user">zhu</span>
+        <span class="user">{{ username }}</span>
     </header>
         <div class="list-header">
             <span class="song-name">歌曲</span>
-            <span class="singer">歌手</span>
+            <span class="singer">播放</span>
         </div>
+    {% for music in musics %}
         <div class="song-list">
             <div class="list-header">
-                    <span class="song-name song">像鱼</span>
-                    <span class="singer song">王贰浪</span>
-            </div>
-            <div class="list-header">
-                <span class="song-name song">像鱼</span>
-                <span class="singer song">王贰浪</span>
-            </div>
-            <div class="list-header">
-                <span class="song-name song">像鱼</span>
-                <span class="singer song">王贰浪</span>
-            </div>
-            <div class="list-header">
-                <span class="song-name song">像鱼</span>
-                <span class="singer song">王贰浪</span>
-            </div>
-            <div class="list-header">
-                <span class="song-name song">像鱼</span>
-                <span class="singer song">王贰浪</span>
+                    <span class="song-name song">{{music.name}}</span>
+                    <!--<span class="singer song">{{music.music_url}}</span>-->
+                <img src="../static/images/play.png" alt="" class="singer song" data-url="{{music.music_url}}" data-name="{{music.name}}">
             </div>
         </div>
-   <div class="divs dis">
-       <form action="music/upload" class="form" enctype='multipart/form-data' method="POST">
-       <input type="file" class="file">
+    {% endfor %}
+       <div class="divs dis">
+       <form action="/music/upload" class="form" enctype='multipart/form-data' method="POST">
+       <input type="file" class="file" name="file">
        <button type="submit" class="submits">确认</button>
        </form>
 
    </div>
    <div class="divs">
-       <form action="search" class="form" method="POST">
-        <input type="search" class="search" name="user_id" placeholder="请输入关键字">
+       <form action="/music/search" class="form" method="POST">
+        <input type="search" class="search" name="user_name" placeholder="请输入关键字">
         <input type="submit" value="搜索" class="search1">
     </form>
     </div>
     <footer style="height: 100px; width: 100%;position: absolute;bottom: 0">
-        <div style="color: rgb(142,106,96);position: absolute;left: 45%;bottom:70%;width: auto; height: auto;font-size: 2em  ">等你下课</div>
-    <audio controls style="width: 50%;opacity: 0.5;position: absolute;left:21%;bottom: 10%">
+        <div  id="title" style="color: rgb(142,106,96);position: absolute;left: 45%;bottom:70%;width: auto; height: auto;font-size: 2em  ">
+
+        </div>
+    <audio controls autoplay  style="width: 50%;opacity: 0.5;position: absolute;left:21%;bottom: 10%">
         <source src="" >
     </audio>
     </footer>
     <script src="../static/javascript/index.js"></script>
+
 </body>
-</html>
+</html>`

@@ -22,5 +22,7 @@ class test():
     # db.session.close()
     # name = 'li-wen-music'
     # bucket = oss2.Bucket(Oss.auth(), Oss.endpoint(), name)
-    # # bucket.put_object_from_file('你好.mp3', '/home/li/桌面/你好.mp3')
-    bucket.sign_url()
+    # bucket.put_object_from_file('你好.mp3', '/home/li/桌面/你好.mp3')
+    bucket = Oss.get_bucket(1)
+    url = bucket.sign_url('GET', 'music-two.mp3', 60)
+    print(url)

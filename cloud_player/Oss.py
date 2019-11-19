@@ -1,4 +1,8 @@
 import oss2
+from flask import session
+
+from app import db
+from app.models import User
 
 
 def auth():
@@ -24,7 +28,9 @@ def get_name(name):
     return bucketname
 
 
-def get_bucket(b_name):
-    bucket = oss2.Bucket(auth(), endpoint(), b_name)
+def get_bucket(user_id):
+    user = db.session.query(User).filter(User.id == user_id).one()
+    username = get_name(user.username)
+    bucket = oss2.Bucket(auth(), endpoint(), username)
     return bucket
 
