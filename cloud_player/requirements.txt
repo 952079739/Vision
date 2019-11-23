@@ -19,6 +19,7 @@ oss2==2.8.0
 pycryptodome==3.9.0
 PyMySQL==0.9.3
 python-dateutil==2.8.1
+python-dotenv==0.10.3
 python-editor==1.0.4
 requests==2.22.0
 six==1.12.0
