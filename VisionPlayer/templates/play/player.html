@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Shipin分享站</title>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+		<link rel="stylesheet" type="text/css" href="/static/css/common.css">
+		<script src="/static/js/jquery-1.12.1.min.js"></script>
+	</head>
+
+	<body>
+
+		<div class="videos">
+			<div class="video_b" style="margin-top:0">
+				<div class="video_b_in">
+
+					{% include 'video.html' %}
+
+					<div class="video_rs">
+
+						<div class="video_rs_t">
+							<span>视频列表</span>
+							<b style="color:red;font-size: 16px">我也要分享视频→</b>
+							<a href="{{ url_for('play.upload') }}">
+								<div class="btnadd">上传</div>
+							</a>
+						</div>
+
+						<div class="video_rs_b">
+
+							{% for item in musicList %}
+							<div class="one_tb" id="movic_src" vid_src="{{ item.video }}" >
+								<span class="one_tb_l">{{loop.index}}</span>
+								<div class="one_tb_c">
+									<img src="{{ item.image }}">
+									<b></b>
+								</div>
+								<div class="one_tb_r">
+									<h3 title="{{ item.title }}">{{ item.title }}</h3>
+									<!--<p title="{{ item.description }}">{{ item.description }}</p>-->
+									<p>{{ item.date }} &nbsp;&nbsp;{{ item.author }} </p>
+								</div>
+							</div>
+							{% endfor %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			$(document).ready(function() {
+				$('.one_tb').eq(0).click();
+			});
+
+			$(".one_tb").click(function() {
+				$(this).addClass("on").siblings(".one_tb").removeClass("on");
+				var hName = $(this).find("h3").html();
+				var vid_src = $(this).attr("vid_src");
+				$(".title_top").html(hName);
+				vids.src = vid_src;
+				vids.play();
+			});
+		</script>
+	</body>
+
+</html>
