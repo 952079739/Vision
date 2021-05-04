@@ -13,8 +13,7 @@ db.create_all()
 # username = 'li'
 # user = select_user_name(username)
 # print(user)
-# old_name = 'you'
-# new_name = 'li'
-# update_user_name(old_name, new_name)
-
+# filepath = '/static/{}/uplode/'.format(username)
+# msg = create(filepath)
+# print(msg)
 

@@ -17,7 +17,7 @@ def now():
 def create(filepath):
     msg = "用户名存在"
     if not os.path.exists(filepath):
-        os.mkdir(filepath)
+        os.makedirs(filepath)
         msg = "成功创建"
         return msg
     else:

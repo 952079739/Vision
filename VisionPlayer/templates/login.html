@@ -24,7 +24,7 @@
 		</div>
 		<div class="col-sm-7 container-small">
 		<h1>登录
-		<small>没有账号！<a href="http://127.0.0.1:5000/user/register">注册</a></small></h1>
+			<small>没有账号！<a href="{{ url_for('user.register') }}">注册</a></small></h1>
 		<form action="#" id="formid" enctype="multipart/form-data">		
 			<div class="form-group">
 				<label id="user_cu">用户名</label>
@@ -55,7 +55,7 @@
 			console.log(data)
 			$.ajax({
 				type: "post",
-				url: "http://127.0.0.1:5000/user/login",
+				url: "{{ url_for('user.login') }}",
 				dataType: "json",
 				async: false,
 				data: data,
@@ -64,7 +64,7 @@
 						alert(result.msg)
 					}else{
 						var user_name = $("#login_name").val()
-						window.location.href="http://127.0.0.1:5000/user/user_info"
+						window.location.href="{{ url_for('user.user_info') }}"
 						sessionStorage.setItem('username',user_name)
 						sessionStorage.setItem('user',"用户")
 					}	

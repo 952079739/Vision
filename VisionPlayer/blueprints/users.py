@@ -29,8 +29,8 @@ def register():
                 user = select_user_name(username)
                 if user is None:
                     if password == password_two:
-                        filepath = '/home/li/桌面/VisionPlayer/static/{}/upload'.format(username)
-                        filepath1 = '/home/li/桌面/VisionPlayer/static/{}/video'.format(username)
+                        filepath = '/root/Visionplay/VisionPlayer/static/{}/upload'.format(username)
+                        filepath1 = '/root/Visionplay/VisionPlayer/static/{}/video'.format(username)
                         add_user(username, password, filepath)
                         msg = create(filepath)
                         msg = create(filepath1)
@@ -98,8 +98,8 @@ def update_user_two():
             user = select_user_name(old_username)
             if user is not None:
                 update_user_name(old_username, new_username)
-                old_file1 = '/home/li/桌面/VisionPlayer/static/{}'.format(old_username)
-                new_file1 = '/home/li/桌面/VisionPlayer/static/{}'.format(new_username)
+                old_file1 = '/root/Visionplay/VisionPlayer/static/{}'.format(old_username)
+                new_file1 = '/root/Visionplay/VisionPlayer/static/{}'.format(new_username)
                 os.rename(old_file1, new_file1)
                 session['username'] = new_username
                 return jsonify({'msg': "success"})
@@ -109,7 +109,7 @@ def update_user_two():
 @user.route('/user_info', methods=['GET'])
 def user_info():
     username = session['username']
-    filepath = 'static/{}/upload'.format(username)
+    filepath = '/root/Visionplay/VisionPlayer/static/{}/upload'.format(username)
     music_list = getMusic(filepath)
     return render_template('movie_info.html', musicList=music_list)
 

@@ -5,7 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<title>个人界面</title>
-	<link rel="stylesheet" href="../static/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/static/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/static/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"/>
+	<link rel="stylesheet" href="/static/lib/jquery/jquery-3.4.1.min.js"/>
 	<link rel="stylesheet" href="../static/css/main.css" />
 	<link rel="stylesheet" href="../static/css/user.css" />
 	<link rel="stylesheet" href="../static/css/cuser.css" />
@@ -60,8 +62,8 @@
 	
 	<div class="container user-info-nav clearfix ">	
 		<ul class="nav navbar-nav clearfix" id="company_function">				
-			<li><a class="active" href="http://127.0.0.1:5000/user/user_info">电影列表</a></li>
-			<li><a href="http://127.0.0.1:5000/play/upload" >上传</a></li>
+			<li><a class="active" href="{{ url_for('user.user_info') }}">电影列表</a></li>
+			<li><a href="{{ url_for('play.upload') }}" >上传</a></li>
 		</ul>	
 		
 	</div>
@@ -72,9 +74,8 @@
 				
 				<div class="user-list" id="company_function_recruit">
 					{% for item in musicList %}
-					<button id="position_infomation" class="user-list-title1" >{{item.title}}</button>
-					<button class="add-margin user-list-btn2" data-toggle="modal" data-target="#mymodal">
-						<a id="UpdateModal" data-toggle="modal" data-target="#mymodal">分享链接</a></button>
+					<button id="movie_infomation" class="user-list-title1" >{{item.title}}</button>
+					<button class="add-margin user-list-btn2" data-toggle="modal" data-target="#myModal">链接</button>
 <!--					<div><div class="col-sm-5 row"><img class="img-user" src="{{item.image}}"></div>-->
 <!--						<div class="col-sm-7 user-list-title2"><a href="#" class="font-size">{{item.author}}</a>-->
 <!--									</div>-->
@@ -90,19 +91,19 @@
 					
 			</div>
 		</div>
-     <div class="modal" id="mymodel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	    <div class="modal-dialog" role="document">
+     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
 	        <div class="modal-content">
 	            <div class="modal-header">
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	                <h4 class="modal-title" >链接</h4>
 	            </div>
 	            <div class="modal-body">
-					<h4>http://localhost:5000/play/{{ session['username'] }}</h4>
+			    <p>http://39.96.2.158:5000/play/{{ session['username'] }}</p>
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-	                <button type="button" class="btn btn-primary" id="emp_update_btn" ><a href="http://localhost:5000/play/{{ session['username'] }}">播放</a></button>
+			<button type="button" class="btn btn-primary" id="emp_update_btn" ><a href="http://39.96.2.158:5000/play/{{ session['username'] }}">播放</a></button>
 	            </div>
 	        </div>
 	    </div>
@@ -123,6 +124,9 @@
     <script src="../static/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
     <!--自己的插件 -->
     <script>
+        $(function() {
+            $('#myModal').modal('hide')
+       });
     	$("#company_function a").click(function(){
 			$("#company_function a").removeClass("active");
 			$(this).addClass("active");
@@ -212,7 +216,7 @@
 					console.log(data)
 					$.ajax({
 						type: "post",
-						url: "http://127.0.0.1:5000/user/info",
+						url: "{{ url_for('user.info') }}",
 						dataType: "json",
 						async: false,
 						data: data,

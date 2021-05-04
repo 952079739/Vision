@@ -56,7 +56,7 @@
 			console.log(data)
 			$.ajax({
 				type: "post",
-				url: "http://127.0.0.1:5000/user/update_password",
+				url: "{{ url_for('user.update_user_one') }}",
 				dataType: "json",
 				async: false,
 				data: data,
@@ -65,7 +65,7 @@
 						alert(result.msg)
 					}else{
 						var user_name = $("#login_name").val()
-						window.location.href="http://127.0.0.1:5000/user/user_info"
+						window.location.href="{{ url_for('user.user_info') }}"
 						sessionStorage.setItem('username',user_name)
 						sessionStorage.setItem('user',"用户")
 					}	
