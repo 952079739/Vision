@@ -45,6 +45,12 @@ def update_user_name(user_name, update_name):
     db.session.commit()
 
 
+def add_movie(movie_name, movie_address, user_id):
+    movie = User(movie_name=movie_name, movie_address=movie_address, user_id=user_id)
+    db.session.add_all([movie])
+    db.session.commit()
+
+
 
 #
 # def add_position(p_name, p_type, p_treatment, p_place, c_id):

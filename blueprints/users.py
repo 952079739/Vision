@@ -4,6 +4,7 @@ import os
 from flask import Blueprint, request, render_template, url_for, jsonify, redirect, session
 from utils.func import create
 from utils.music_list import getMusic
+from utils.movie_oss import create_bucket
 from db_sql import *
 
 user = Blueprint('user', __name__, url_prefix="/user")
@@ -32,8 +33,10 @@ def register():
                         filepath = '/root/Visionplay/VisionPlayer/static/{}/upload'.format(username)
                         filepath1 = '/root/Visionplay/VisionPlayer/static/{}/video'.format(username)
                         add_user(username, password, filepath)
+                        user = select_user_name(username)
                         msg = create(filepath)
                         msg = create(filepath1)
+                        create_bucket(user.user_id)
                         # return redirect(url_for('user.login'))
                         return jsonify({'msg': msg})
                     else:
@@ -56,9 +59,10 @@ def login():
             data = json.loads(data)
             username = data['username']
             password = data['password']
-            users = select_user(username, password)
-            if users is not None:
+            user = select_user(username, password)
+            if user is not None:
                 session['username'] = username
+                session['user_id'] = user.user_id
                 return jsonify({'msg': "success"})
             else:
                 return jsonify(typ_inforamtion='请注册后再登录')
@@ -81,7 +85,7 @@ def update_user_one():
                 if password == password2:
                     update_user_password(username, password)
                     return jsonify({'msg': "success"})
-                return jsonify({'msg':"输入密码不一致"})
+                return jsonify({'msg': "输入密码不一致"})
             return jsonify({'msg': "请输入新密码"})
 
 
